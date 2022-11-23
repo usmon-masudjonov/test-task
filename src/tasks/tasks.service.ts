@@ -6,6 +6,7 @@ import { TasksRepo } from './repo/tasks.repo';
 import { EventsEnum } from './enums/evens.enum';
 import { HandleCreatedNewTaskEventDto } from './dto/handleCreatedNewTask.dto';
 import { TaskStatusEnum } from './enums/taskStatus.enum';
+import { CreateDto } from './dto/create.dto';
 
 @Injectable()
 export class TasksService {
@@ -61,5 +62,13 @@ export class TasksService {
 
       await transaction.commit();
     }
+  }
+
+  public async findAll() {
+    return this.repo.findAll();
+  }
+
+  public async create(data: CreateDto) {
+    return this.repo.create(data);
   }
 }
